@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/images/favicon.png" type="image/gif" sizes="64x64">
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/gif" sizes="64x64">
+    <link rel="apple-touch-icon" href="./assets/images/favicon.png" type="image/gif">
+
+    <title>Heart Checkup | E-Health Care</title>
+    <!-- Google Font CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script>
+
+document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    // Collect form data
+    const formData = {
+        gender: document.querySelector('select[name="gender"]').value,
+        age: document.querySelector('input[placeholder="Insert age"]').value,
+        fbs: document.querySelector('input[name="fbs"]:checked') ? document.querySelector('input[name="fbs"]:checked').value : null,
+        exang: document.querySelector('input[name="exang"]:checked') ? document.querySelector('input[name="exang"]:checked').value : null,
+        restECG: document.querySelector('select[name="restECG"]').value,
+        restingBP: document.querySelector('input[placeholder="mm Hg on admission to the hospital"]').value,
+        chestPainType: document.querySelector('select[name="chestPainType"]').value,
+        heartRate: document.querySelector('input[placeholder="Insert maximum value"]').value,
+        bloodDisorder: document.querySelector('select[name="bloodDisorder"]').value,
+        slope: document.querySelector('input[name="slope"]:checked') ? document.querySelector('input[name="slope"]:checked').value : null,
+        vessels: document.querySelector('input[name="ca"]:checked') ? document.querySelector('input[name="ca"]:checked').value : null,
+        cholesterol: document.querySelector('input[placeholder="mg/dl"]').value,
+        stDepression: document.querySelector('input[placeholder="‘ST’ relates to positions on the ECG plot."]').value
+    };
+
+    // Debug: Check the data in console
+    console.log('Form Data:', formData);
+
+    // Example of sending this data to a backend endpoint using fetch API
+    fetch('/your-backend-endpoint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Heart checkup submitted successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error processing your request.');
+    });
+});
+document.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent default form submission
+
+    // Collect form data
+    const formData = {
+        gender: document.querySelector('select[name="gender"]').value,
+        age: document.querySelector('input[placeholder="Insert age"]').value,
+        fbs: document.querySelector('input[name="fbs"]:checked') ? document.querySelector('input[name="fbs"]:checked').value : null,
+        exang: document.querySelector('input[name="exang"]:checked') ? document.querySelector('input[name="exang"]:checked').value : null,
+        restECG: document.querySelector('select[name="restECG"]').value,
+        restingBP: document.querySelector('input[placeholder="mm Hg on admission to the hospital"]').value,
+        chestPainType: document.querySelector('select[name="chestPainType"]').value,
+        heartRate: document.querySelector('input[placeholder="Insert maximum value"]').value,
+        bloodDisorder: document.querySelector('select[name="bloodDisorder"]').value,
+        slope: document.querySelector('input[name="slope"]:checked') ? document.querySelector('input[name="slope"]:checked').value : null,
+        vessels: document.querySelector('input[name="ca"]:checked') ? document.querySelector('input[name="ca"]:checked').value : null,
+        cholesterol: document.querySelector('input[placeholder="mg/dl"]').value,
+        stDepression: document.querySelector('input[placeholder="‘ST’ relates to positions on the ECG plot."]').value
+    };
+
+    // Log collected data to check
+    console.log('Collected Form Data:', formData);
+
+    if (!formData.gender || !formData.age) {
+        alert('Please complete all required fields before submitting.');
+        return; // Exit if critical data is missing
+    }
+
+    // Send data to the backend (assuming the endpoint exists)
+    fetch('/your-backend-endpoint', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Success:', data);
+        alert('Heart checkup submitted successfully!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error processing your request.');
+    });
+});
+</script>
+</head>
+
+<body>
+    <!-- Navbar-Start -->
+    <div class="navbar-shadow">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="./assets/images/logo.png" alt="" width='255px' height="auto">
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="heart-checkup.html">Heart Checkup</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="covid.html"> <span
+                                        class="text-danger">Covid-19</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="Feedback.html">Feedback</a>
+                            </li>
+                        </ul>
+                        <!-- Login-Button -->
+                        <!-- <a href="./signup.html"><button class="btn signup-btn px-4">Sign Up</button></a> -->
+
+                        <!-- User-Profile -->
+                        <div class="d-flex align-items-center btn-group">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <img class="user-img" src="./assets/images/user.png" alt="user">
+                                <span class="user-first-name">Shahriar</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="PublicProfile.html">profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a type="button" class="btn dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+                                        Log Out
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Log out Popup -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content modal-wrapper border-0">
+                                        <div class="modal-top">
+                                            <i class="danger-icon fas fa-exclamation-triangle"></i>
+                                            <div>
+                                                <h5 class="modal-heading">Log out from this session</h5>
+                                                <p class="modal-description">Are you sure you want to log out? All of
+                                                    your data
+                                                    will be temporary
+                                                    removed. You have to sign in again.</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-bottom">
+                                            <button type="button" class="btn btn-outline-primary mx-3"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <a href="http://">
+                                                <button type="button" class="btn btn-custom-danger">
+                                                    Log out
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar-End -->
+
+    <section class="heart-page-section bg-light">
+        <div class="container">
+            <div>
+                <div class="d-flex justify-content-center align-items-center">
+                    <h2 class="mx-5">Heart</h2>
+                    <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_S0psCs.json"
+                        background="transparent" speed="1" style="width: 200px; height: 150px;" loop autoplay>
+                    </lottie-player>
+                    <h2 class="mx-5">Checkup</h2>
+                </div>
+                <div class="row">
+                    <div class="col-8 mx-auto border border-primary">
+                        <form class="row g-3 my-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select">
+                                    <option selected disabled>Select gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Age</label>
+                                <input type="number" placeholder="Insert age" class="form-control">
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label">Fasting blood sugar</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="fbs">
+                                    <label class="form-check-label">
+                                        Gratter than 120 mg/dl
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="fbs" checked>
+                                    <label class="form-check-label">
+                                        Less than 120 mg/dl
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <label class="form-label">Exercise induced angina</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exang" checked>
+                                    <label class="form-check-label">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exang">
+                                    <label class="form-check-label">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Resting electrocardiographic results
+                                </label>
+                                <select class="form-select">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="1">Probable or definite left ventricular
+                                        hypertrophy by Estes’ criteria
+                                    </option>
+                                    <option value="2">Normal
+                                    </option>
+                                    <option value="3">having ST-T wave abnormality (T wave inversions and/or ST
+                                        elevation or
+                                        depression of > 0.05 mV)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label class="form-label">Resting blood pressure</label>
+                                <input type="number" placeholder="mm Hg on admission to the hospital"
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">Chest pain type</label>
+                                <select class="form-select">
+                                    <option value="1">Asymptomatic
+                                    </option>
+                                    <option value="2">Atypical angina
+                                    </option>
+                                    <option value="3">Non-anginal pain
+                                    </option>
+                                    <option value="4">Typical angina
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Heart rate achieved</label>
+                                <input type="number" placeholder="Insert maximum value" class="form-control">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">Blood disorder (Thalassemia)
+                                </label>
+                                <select class="form-select">
+                                    <option selected disabled>Choose...</option>
+                                    <option value="1">Fixed defect (no blood flow in some part of the heart)
+
+                                    </option>
+                                    <option value="2">Normal blood flow
+
+                                    </option>
+                                    <option value="3">Reversible defect (a blood flow is observed but it is not normal)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Slope of peak exercise ST segment</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="slope" value="1">
+                                    <label class="form-check-label">Downsloping</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="slope" value="2" checked>
+                                    <label class="form-check-label">Flat</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="slope" value="3">
+                                    <label class="form-check-label">Upsloping</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Major vessels (0-3) colored by fluoroscopy</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="ca" value="1">
+                                    <label class="form-check-label">0</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="ca" value="2" checked>
+                                    <label class="form-check-label">1</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="ca" value="3">
+                                    <label class="form-check-label">2</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="ca" value="3">
+                                    <label class="form-check-label">3</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Cholesterol measurement</label>
+                                <input type="number" placeholder="mg/dl" class="form-control">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">ST depression induced by exercise relative to rest </label>
+                                <input type="number" placeholder="‘ST’ relates to positions on the ECG plot."
+                                    class="form-control">
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <!-- Logo Section -->
+        <div class="footer-logo">
+            <img src="./assets/images/logo.png" alt="Company Logo">
+        </div>
+        
+        <!-- Social Media Links -->
+        <div class="footer-social">
+                <a href="#" target="_blank"><span class="social-icons"><i class="fab fa-facebook"
+                            style="color:#30629d;"></i></span></a>
+                <a href="#" target="_blank"><span class="social-icons"><i class="fab fa-twitter"
+                            style="color:#00A7E6;"></i></span></a>
+                <a href="#" target="_blank"><span class="social-icons"><i class="fab fa-linkedin"
+                            style="color:#0073B1;"></i></span></a>
+                <a href="#" target="_blank"><span class="social-icons"><i class="fab fa-instagram"
+                            style="color:#D32C86;"></i></span></a>
+        </div>
+        
+        <!-- Divider -->
+        <div class="divider"></div>
+    
+        <!-- Footer Links -->
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Security</a>
+            <a href="#">Website Accessibility</a>
+            <a href="#">Manage Cookies</a>
+        </div>
+        
+        <!-- Copyright Section -->
+        <div class="footer-copyright">
+            © 2024 Medicure. All Rights Reserved.
+        </div>
+    </footer>
+    
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js">
+    </script>
+</body>
+
+</html>
