@@ -119,8 +119,7 @@ section {
 .hero {
 	background-image: url("https://www.medi-talent.com/wp-content/uploads/2022/02/home-meditalent-nuestra-metologia-odio6s9qqwhd7i2zu6qux107e8pp6ej63pbz7jntsw.png");
 	background-repeat: no-repeat;
-	background-position: center;
-	width: 80%;
+	width: 100%;
 	height: 490px;
 	background-size: cover;
 }
